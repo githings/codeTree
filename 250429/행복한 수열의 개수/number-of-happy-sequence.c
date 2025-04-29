@@ -6,7 +6,7 @@ int grid[101][101];
 int main(){
     scanf("%d %d", &n, &m);
 
-    if (m==1) {printf("%d", n*2); return 0;}
+    // if (m==1) {printf("%d", n*2); return 0;}
     for (int i = 0; i < n; i++){
         int j;
         for (j=0; j < n; j++){
@@ -33,18 +33,16 @@ int main(){
     for (int i = 0;  i< n; i++){
         int sameCount=1, j=0;
         for (int j=0; j<n-1; j++) {
-            // while (n-j>=m)
             if (grid[i][j]==grid[i][j+1]) sameCount++;
             else sameCount=1;
         }
         if (sameCount>=m) ans++;
     }
 
-    for (int j = 0;  j< n; j++){
-        int sameCount=1, i=0;
-        for (int i=0;i <n-1; i++) {
-            // while (n-j>=m)
-            if (grid[i][j]==grid[i+1][j]) sameCount++;
+    for (int i = 0;  i< n; i++){
+        int sameCount=1, j=0;
+        for (int j=0; j<n-1; j++) {
+            if (grid[j][i]==grid[j+1][i]) sameCount++;
             else sameCount=1;
         }
         if (sameCount>=m) ans++;
