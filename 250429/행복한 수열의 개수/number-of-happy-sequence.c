@@ -52,11 +52,9 @@ int main(){
                 sameCountColumn++;
             }
             else sameCountColumn=1;
-
-            if (rowFlag && colFlag) break;
         }
         if (sameCountRow>=m) ans++;
-        if (sameCountColumn>m) ans++;
+        if (sameCountColumn>=m) ans++;
     }
 
 
