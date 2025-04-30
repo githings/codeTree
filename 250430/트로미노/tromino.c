@@ -21,7 +21,7 @@ int main() {
             //수평선 하나 
             if (j+2<=n) {
                 localSum = g[i][j] + g[i][j+1] + g[i][j+2];
-                printf("%d %d \n", globalSum, localSum);
+                // printf("%d %d \n", globalSum, localSum);
             }
             if (globalSum<localSum) globalSum = localSum;
             //수직선 하나
