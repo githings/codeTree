@@ -26,16 +26,16 @@ int main() {
             if (globalSum<localSum) globalSum = localSum;
             
             // 기본 방향
-            if (i-1>=0 && j+1<=m) localSum = g[i][j] + g[i-1][j] + g[i][j+1];
+            if (i>=1 && j+1<=m) localSum = g[i][j] + g[i-1][j] + g[i][j+1];
             if (globalSum<localSum) globalSum = localSum;
             // 90도
             if (i+1<=n && j+1<=m) localSum = g[i][j] + g[i][j+1] + g[i+1][j];
             if (globalSum<localSum) globalSum = localSum;
             //180도
-            if (i+1<=n && j-1>=0) localSum = g[i][j] + g[i][j-1] + g[i+1][j];
+            if (i+1<=n && j>=1) localSum = g[i][j] + g[i][j-1] + g[i+1][j];
             if (globalSum<localSum) globalSum = localSum;
             //270도
-            if (i-1>=0 && j-1>=0) localSum = g[i][j] + g[i][j-1] + g[i-1][j];
+            if (i>=1 && j>=1) localSum = g[i][j] + g[i][j-1] + g[i-1][j];
             if (globalSum<localSum) globalSum = localSum;
         }
     }
