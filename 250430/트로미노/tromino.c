@@ -21,7 +21,7 @@ int main() {
             //수평선 하나 
             if (j+2<=n) {
                 localSum = g[i][j] + g[i][j+1] + g[i][j+2];
-                // printf("%d %d \n", globalSum, localSum);
+                printf("%d %d \n", globalSum, localSum);
             }
             if (globalSum<localSum) globalSum = localSum;
             //수직선 하나
@@ -34,7 +34,7 @@ int main() {
             if (i-1>=0 && j+1<=n) localSum = g[i][j] + g[i-1][j] + g[i][j+1];
             if (globalSum<localSum) globalSum = localSum;
             // 90도
-            if (i+1<n && j+1<=n) localSum = g[i][j] + g[i][j+1] + g[i+1][j];
+            if (i+1<=n && j+1<=n) localSum = g[i][j] + g[i][j+1] + g[i+1][j];
             if (globalSum<localSum) globalSum = localSum;
             //180도
             if (i+1<=n && j-1>=0) localSum = g[i][j] + g[i][j-1] + g[i+1][j];
