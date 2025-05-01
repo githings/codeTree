@@ -22,31 +22,55 @@ int main() {
             for (int s=0; s<n; s++) {
                 int x=j, y=i-s;
                 //first plane
-                while(y!=i && 0<=y && y<n && 0<=x && x<n) {
-                    step_sum += g[y][x];
+                // while(0<=y && y<n && 0<=x && x<n) { y+=1; x+=1;}
+                while(y!=i) {
+                    if (!(0<=y && y<n && 0<=x && x<n)) {
+                        y += 1;
+                        x += 1;
+                        continue;
+                    }
                     y += 1;
                     x += 1;
+                    step_sum += g[y][x];
                 }
                 //second plane
                 x=j+s, y=i;
-                while(x!=j && 0<=y && y<n && 0<=x && x<n) {
-                    step_sum += g[y][x];
+                // while(0<=y && y<n && 0<=x && x<n) { y+=1; x-=1;}
+                while(y!=i) {
+                    if (!(0<=y && y<n && 0<=x && x<n)) {
+                        y += 1;
+                        x -= 1;
+                        continue;
+                    }
                     y += 1;
                     x -= 1;
+                    step_sum += g[y][x];
                 }
                 //third plane
                 x=j, y=i+s;
-                while(y!=i && 0<=y && y<n && 0<=x && x<n) {
-                    step_sum += g[y][x];
+                // while(0<=y && y<n && 0<=x && x<n) { y-=1; x-=1;}
+                while(y!=i) {
+                    if (!(0<=y && y<n && 0<=x && x<n)) {
+                        y -= 1;
+                        x -= 1;
+                        continue;
+                    }
                     y -= 1;
                     x -= 1;
+                    step_sum += g[y][x];
                 }
                 //forth plane
                 x=j-s, y=i;
-                while(x!=j && 0<=y && y<n && 0<=x && x<n) {
-                    step_sum += g[y][x];
+                // while(0<=y && y<n && 0<=x && x<n) { y-=1; x+=1;}
+                while(y!=i) {
+                    if (!(0<=y && y<n && 0<=x && x<n)) {
+                        y -= 1;
+                        x += 1;
+                        continue;
+                    }
                     y -= 1;
                     x += 1;
+                    step_sum += g[y][x];
                 }
                 int cost = s*s + (s+1)*(s+1);
                 // 이득이라면 
