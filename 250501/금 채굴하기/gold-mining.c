@@ -19,7 +19,7 @@ int main() {
         for (int j = 0; j < n; j++) {
             int step_sum=0;
             step_sum += g[i][j];
-            for (int s=0; s<n; s++) {
+            for (int s=0; s<=n; s++) {
                 int x=j, y=i-s;
                 //first plane
                 // while(0<=y && y<n && 0<=x && x<n) { y+=1; x+=1;}
