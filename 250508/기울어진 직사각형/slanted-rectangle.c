@@ -14,38 +14,68 @@ int main() {
     int global_sum=0, a_sum=0, b_sum=0,c_sum=0,d_sum=0;
     int x=0,y=0;
 
+    // for (int i = 0; i < n; i++) {
+    //     for (int j = 0; j < n; j++)
+    //         printf("%d ", &grid[i][j]);
+    //     printf("\n");
+    // }
+
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
+            x=j, y=i;
 
+            int ax=x, ay=y;
             for (int a=1; a<n; a++) {
-                if (a<0 || a>=n) break;
-                a_sum+=grid[++y][--x];
+                // printf("%d %d %d.. %d %d\n", i,j, a, ay,ax);
+                if (x-a<0 || y+a>=n) break;
+                
+                a_sum+=grid[++ay][--ax];
+                // printf("a[%d][%d] %d [%d, %d]==%d\n",i,j, a_sum,  ay,ax, grid[ay][ax] );
 
+                int bx=ax, by=ay;
                 for (int b=1;b<n;b++) {
-                    if (b<0 || b>=n) break;
-                    b_sum+=grid[++y][++x];
+                    if (ax+b>=n || ay+b>=n) break;
+                    b_sum+=grid[++by][++bx];
+                    // printf("b[%d][%d] %d [%d, %d]==%d\n",i,j, b_sum,  by,bx, grid[by][bx] );
 
-                    for (int c=1;b<n;b++) {
-                        if (c<0 || c>=n) break;
-                        int x_diff = (x-j)
-                        if (y-i == x_diff ) break;
-                        c_sum+=grid[--y][++x];
+                    int cx=bx, cy=by;
+                    for (int c=1;c<n;c++) {
+                        if (bx+c>=n || by-c<0) break;
+                        c_sum+=grid[--cy][++cx];
+                        // printf("[%d %d] %d %d %d ___ %d %d %d %d\n", i,j, a,b,c, x,y, x-j, y-i);
 
-                        for (int d=1;b<n;b++) { 
-                            if (d<0 || d>=n) break;
-                            if (x==j && y==i) {
-                                if (a_sum + b_sum +c_sum + d_sum > global_sum) global_sum = a_sum + b_sum +c_sum + d_sum;
-                                break;
+                        if (y-i == x-j ) {
+                            //  printf("!![%d %d] %d %d %d\n", i,j, a,b,c);
+                            
+                            int dx=cx, dy=cy;
+                            for (int d=1;d<n;d++) { 
+                                if (cx-d<0 || cy-d<0) break;
+                                d_sum+=grid[--dy][--dx];
+                                if (dx==j && dy==i) {
+                                    if (a_sum + b_sum +c_sum + d_sum > global_sum) {
+                                        global_sum = a_sum + b_sum +c_sum + d_sum;
+                                        // printf("%d %d :  %d %d %d %d == %d(%d %d %d %d)\n", i,j,a,b,c,d, global_sum, a_sum, b_sum, c_sum, d_sum);
+                                        }
+                                    break;
+                                }
                             }
-                            d_sum+=grid[--y][--x];
-
+                            d_sum=0;
+                            // x=cx; y=cy;
                         }
-                    }
-                }
-            }
 
+                    }
+                    c_sum=0;
+                    // x=bx; y=by;
+                }
+                b_sum=0;
+                // x=ax; y=ay;
+            }
+            a_sum=0;
         }
     }
+
+
+    printf("%d", global_sum);
     
     return 0;
 }
