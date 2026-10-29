@@ -18,7 +18,7 @@ public class Main {
                 int centerC = j;
                 // System.out.println(i+"센터"+j);
 
-                for (int k = 0; k < n*n; k++) {
+                for (int k = 0; k < 2*n; k++) {
                     // System.out.println(k);
                     int gold = 0;
                     for (int r = 0; r < n; r++) {
