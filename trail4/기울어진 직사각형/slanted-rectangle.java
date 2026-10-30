@@ -14,7 +14,7 @@ public class Main {
             
             for (int a = 1; a < n; a++) {
                 for (int b = 1; b < n; b++) {
-                    int val = grid[i][j];
+                    int val = 0;
                     // 좌측 침범
                     if (0>i-a || j+a >= n) continue;
                     // 상측
@@ -49,7 +49,7 @@ public class Main {
                         val += grid[nr][nc];
                     }
 
-                    maxSum = Math.max(maxSum, val-grid[i][j]);
+                    maxSum = Math.max(maxSum, val);
                 }
             }
 
